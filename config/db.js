@@ -5,7 +5,10 @@ const connectDB = async () => {
   if (mongoose.connection.readyState >= 1) return; // Prevent multiple connections
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    const mongoURI = process.env.MONGODB_URI;
+    if (!mongoURI) throw new Error("MongoDB URI is undefined");
+
+    await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
