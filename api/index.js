@@ -1,5 +1,6 @@
 // api/index.js
-import connectDB from "../config/db";
+import mongoose from "mongoose";
+import connectDB from "../config/db"; // Make sure this path is correct
 
 export default async (req, res) => {
   await connectDB();
