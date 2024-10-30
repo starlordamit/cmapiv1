@@ -1,6 +1,6 @@
 // routes/publicBrandRoutes.js
-const express = require("express");
-const Brand = require("../models/Brand");
+import express from "express";
+import Brand from "../models/Brand.js";
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

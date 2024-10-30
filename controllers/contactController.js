@@ -1,8 +1,8 @@
 // controllers/contactController.js
-const Contact = require("../models/Contact");
+import Contact from "../models/Contact.js";
 
 // Submit a new contact form (Public)
-exports.submitContactForm = async (req, res) => {
+export const submitContactForm = async (req, res) => {
   try {
     const { name, email, contactNumber, message } = req.body;
     const contact = new Contact({ name, email, contactNumber, message });
@@ -14,7 +14,7 @@ exports.submitContactForm = async (req, res) => {
 };
 
 // Fetch contact forms with pagination (Authenticated)
-exports.getContactForms = async (req, res) => {
+export const getContactForms = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 25;
@@ -36,7 +36,7 @@ exports.getContactForms = async (req, res) => {
 };
 
 // Delete a contact form (Authenticated)
-exports.deleteContactForm = async (req, res) => {
+export const deleteContactForm = async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
     res.json({ message: "Contact form deleted successfully." });
@@ -45,7 +45,8 @@ exports.deleteContactForm = async (req, res) => {
   }
 };
 
-exports.markContactAsRead = async (req, res) => {
+// Mark contact as read (Authenticated)
+export const markContactAsRead = async (req, res) => {
   try {
     const contact = await Contact.findByIdAndUpdate(
       req.params.id,

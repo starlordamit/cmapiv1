@@ -1,5 +1,5 @@
 // models/Creator.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const CreatorSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -13,4 +13,5 @@ const CreatorSchema = new mongoose.Schema({
   status: { type: String, enum: ["public", "private"], default: "private" },
 });
 
-module.exports = mongoose.model("Creator", CreatorSchema);
+const Creator = mongoose.model("Creator", CreatorSchema);
+export default Creator;

@@ -1,13 +1,12 @@
 // routes/influencerRoutes.js
-
-const express = require("express");
-const {
+import express from "express";
+import {
   submitInfluencerForm,
   getInfluencerForms,
   deleteInfluencerForm,
   markInfluencerAsRead,
-} = require("../controllers/influencerController");
-const auth = require("../middleware/authMiddleware");
+} from "../controllers/influencerController.js";
+import auth from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -15,6 +14,6 @@ const router = express.Router();
 router.post("/submit", submitInfluencerForm);
 router.get("/", auth, getInfluencerForms);
 router.delete("/:id", auth, deleteInfluencerForm);
-router.patch("/:id/read", auth, markInfluencerAsRead); // New endpoint to mark as read
+router.patch("/:id/read", auth, markInfluencerAsRead); // Endpoint to mark as read
 
-module.exports = router;
+export default router;

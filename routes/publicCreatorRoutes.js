@@ -1,6 +1,6 @@
 // routes/publicCreatorRoutes.js
-const express = require("express");
-const Creator = require("../models/Creator");
+import express from "express";
+import Creator from "../models/Creator.js";
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

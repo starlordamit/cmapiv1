@@ -1,5 +1,5 @@
 // models/Brand.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const BrandSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -8,4 +8,5 @@ const BrandSchema = new mongoose.Schema({
   status: { type: String, enum: ["public", "private"], default: "private" },
 });
 
-module.exports = mongoose.model("Brand", BrandSchema);
+const Brand = mongoose.model("Brand", BrandSchema);
+export default Brand;

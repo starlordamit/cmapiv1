@@ -1,7 +1,7 @@
 // controllers/creatorController.js
-const Creator = require("../models/Creator");
+import Creator from "../models/Creator.js";
 
-exports.createCreator = async (req, res) => {
+export const createCreator = async (req, res) => {
   try {
     const creator = new Creator(req.body);
     await creator.save();
@@ -11,7 +11,7 @@ exports.createCreator = async (req, res) => {
   }
 };
 
-exports.getCreators = async (req, res) => {
+export const getCreators = async (req, res) => {
   try {
     const creators = await Creator.find();
     res.json(creators);
@@ -20,7 +20,7 @@ exports.getCreators = async (req, res) => {
   }
 };
 
-exports.updateCreator = async (req, res) => {
+export const updateCreator = async (req, res) => {
   try {
     const creator = await Creator.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -31,7 +31,7 @@ exports.updateCreator = async (req, res) => {
   }
 };
 
-exports.deleteCreator = async (req, res) => {
+export const deleteCreator = async (req, res) => {
   try {
     await Creator.findByIdAndDelete(req.params.id);
     res.json({ message: "Creator deleted" });

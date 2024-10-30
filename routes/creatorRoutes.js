@@ -1,12 +1,12 @@
 // routes/creatorRoutes.js
-const express = require("express");
-const {
+import express from "express";
+import {
   createCreator,
   getCreators,
   updateCreator,
   deleteCreator,
-} = require("../controllers/creatorController");
-const auth = require("../middleware/authMiddleware");
+} from "../controllers/creatorController.js";
+import auth from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.get("/", auth, getCreators);
 router.put("/:id", auth, updateCreator);
 router.delete("/:id", auth, deleteCreator);
 
-module.exports = router;
+export default router;

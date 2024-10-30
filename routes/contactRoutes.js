@@ -1,13 +1,12 @@
 // routes/contactRoutes.js
-
-const express = require("express");
-const {
+import express from "express";
+import {
   submitContactForm,
   getContactForms,
   deleteContactForm,
   markContactAsRead,
-} = require("../controllers/contactController");
-const auth = require("../middleware/authMiddleware");
+} from "../controllers/contactController.js";
+import auth from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -15,6 +14,6 @@ const router = express.Router();
 router.post("/submit", submitContactForm);
 router.get("/", auth, getContactForms);
 router.delete("/:id", auth, deleteContactForm);
-router.patch("/:id/read", auth, markContactAsRead); // New endpoint to mark as read
+router.patch("/:id/read", auth, markContactAsRead); // Endpoint to mark as read
 
-module.exports = router;
+export default router;

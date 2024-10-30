@@ -1,5 +1,5 @@
 // models/Contact.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const ContactSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -10,4 +10,5 @@ const ContactSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Contact", ContactSchema);
+const Contact = mongoose.model("Contact", ContactSchema);
+export default Contact;

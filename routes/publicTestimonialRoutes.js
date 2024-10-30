@@ -1,6 +1,6 @@
 // routes/publicTestimonialRoutes.js
-const express = require("express");
-const Testimonial = require("../models/Testimonial");
+import express from "express";
+import Testimonial from "../models/Testimonial.js";
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

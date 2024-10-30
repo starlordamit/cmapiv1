@@ -1,9 +1,9 @@
 // controllers/authController.js
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -19,10 +19,11 @@ exports.login = async (req, res) => {
     res.json({ token });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 };
-exports.register = async (req, res) => {
+
+export const register = async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -33,7 +34,7 @@ exports.register = async (req, res) => {
     }
 
     // Create new user
-    user = new User({ username, password });
+    user = new User({ username });
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
@@ -50,6 +51,6 @@ exports.register = async (req, res) => {
     res.status(201).json({ token, msg: "User created successfully" });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 };

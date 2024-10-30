@@ -1,7 +1,7 @@
 // controllers/testimonialController.js
-const Testimonial = require("../models/Testimonial");
+import Testimonial from "../models/Testimonial.js";
 
-exports.createTestimonial = async (req, res) => {
+export const createTestimonial = async (req, res) => {
   try {
     const testimonial = new Testimonial(req.body);
     await testimonial.save();
@@ -11,7 +11,7 @@ exports.createTestimonial = async (req, res) => {
   }
 };
 
-exports.getTestimonials = async (req, res) => {
+export const getTestimonials = async (req, res) => {
   try {
     const testimonials = await Testimonial.find();
     res.json(testimonials);
@@ -20,7 +20,7 @@ exports.getTestimonials = async (req, res) => {
   }
 };
 
-exports.updateTestimonial = async (req, res) => {
+export const updateTestimonial = async (req, res) => {
   try {
     const testimonial = await Testimonial.findByIdAndUpdate(
       req.params.id,
@@ -33,7 +33,7 @@ exports.updateTestimonial = async (req, res) => {
   }
 };
 
-exports.deleteTestimonial = async (req, res) => {
+export const deleteTestimonial = async (req, res) => {
   try {
     await Testimonial.findByIdAndDelete(req.params.id);
     res.json({ message: "Testimonial deleted" });

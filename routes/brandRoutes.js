@@ -1,18 +1,18 @@
 // routes/brandRoutes.js
-const express = require("express");
-const {
+import express from "express";
+import {
   createBrand,
   getBrands,
   updateBrand,
   deleteBrand,
-} = require("../controllers/brandController");
-const auth = require("../middleware/authMiddleware");
+} from "../controllers/brandController.js";
+import verifyToken from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", auth, createBrand);
-router.get("/", auth, getBrands);
-router.put("/:id", auth, updateBrand);
-router.delete("/:id", auth, deleteBrand);
+router.post("/", verifyToken, createBrand);
+router.get("/", verifyToken, getBrands);
+router.put("/:id", verifyToken, updateBrand);
+router.delete("/:id", verifyToken, deleteBrand);
 
-module.exports = router;
+export default router;

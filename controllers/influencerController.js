@@ -1,8 +1,8 @@
 // controllers/influencerController.js
-const Influencer = require("../models/Influencer");
+import Influencer from "../models/Influencer.js";
 
 // Submit a new influencer form (Public)
-exports.submitInfluencerForm = async (req, res) => {
+export const submitInfluencerForm = async (req, res) => {
   try {
     const { name, email, contactNumber, youtubeUrl, instagramUrl, remarks } =
       req.body;
@@ -24,7 +24,7 @@ exports.submitInfluencerForm = async (req, res) => {
 };
 
 // Fetch influencer forms with pagination (Authenticated)
-exports.getInfluencerForms = async (req, res) => {
+export const getInfluencerForms = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 25;
@@ -46,7 +46,7 @@ exports.getInfluencerForms = async (req, res) => {
 };
 
 // Delete an influencer form (Authenticated)
-exports.deleteInfluencerForm = async (req, res) => {
+export const deleteInfluencerForm = async (req, res) => {
   try {
     await Influencer.findByIdAndDelete(req.params.id);
     res.json({ message: "Influencer form deleted successfully." });
@@ -54,7 +54,9 @@ exports.deleteInfluencerForm = async (req, res) => {
     res.status(500).json({ error: "Failed to delete influencer form." });
   }
 };
-exports.markInfluencerAsRead = async (req, res) => {
+
+// Mark influencer form as read (Authenticated)
+export const markInfluencerAsRead = async (req, res) => {
   try {
     const influencer = await Influencer.findByIdAndUpdate(
       req.params.id,

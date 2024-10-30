@@ -1,5 +1,5 @@
 // models/Testimonial.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const TestimonialSchema = new mongoose.Schema({
   brand: { type: String, required: true },
@@ -9,4 +9,5 @@ const TestimonialSchema = new mongoose.Schema({
   status: { type: String, enum: ["public", "private"], default: "private" },
 });
 
-module.exports = mongoose.model("Testimonial", TestimonialSchema);
+const Testimonial = mongoose.model("Testimonial", TestimonialSchema);
+export default Testimonial;

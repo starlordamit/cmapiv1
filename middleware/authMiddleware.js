@@ -1,7 +1,7 @@
 // middleware/authMiddleware.js
 import jwt from "jsonwebtoken";
 
-export const verifyToken = async (req, res, next) => {
+const verifyToken = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) {
@@ -18,3 +18,5 @@ export const verifyToken = async (req, res, next) => {
     res.status(400).json({ message: "Invalid token." });
   }
 };
+
+export default verifyToken;

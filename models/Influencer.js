@@ -1,5 +1,5 @@
 // models/Influencer.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const InfluencerSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -8,8 +8,9 @@ const InfluencerSchema = new mongoose.Schema({
   youtubeUrl: { type: String, required: true },
   instagramUrl: { type: String, required: true },
   remarks: { type: String },
-  read: { type: Boolean, default: false }, // New field for read status
+  read: { type: Boolean, default: false }, // Field for read status
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Influencer", InfluencerSchema);
+const Influencer = mongoose.model("Influencer", InfluencerSchema);
+export default Influencer;

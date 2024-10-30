@@ -1,7 +1,7 @@
 // controllers/brandController.js
-const Brand = require("../models/Brand");
+import Brand from "../models/Brand.js";
 
-exports.createBrand = async (req, res) => {
+export const createBrand = async (req, res) => {
   try {
     const brand = new Brand(req.body);
     await brand.save();
@@ -11,7 +11,7 @@ exports.createBrand = async (req, res) => {
   }
 };
 
-exports.getBrands = async (req, res) => {
+export const getBrands = async (req, res) => {
   try {
     const brands = await Brand.find();
     res.json(brands);
@@ -20,7 +20,7 @@ exports.getBrands = async (req, res) => {
   }
 };
 
-exports.updateBrand = async (req, res) => {
+export const updateBrand = async (req, res) => {
   try {
     const brand = await Brand.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -31,7 +31,7 @@ exports.updateBrand = async (req, res) => {
   }
 };
 
-exports.deleteBrand = async (req, res) => {
+export const deleteBrand = async (req, res) => {
   try {
     await Brand.findByIdAndDelete(req.params.id);
     res.json({ message: "Brand deleted" });

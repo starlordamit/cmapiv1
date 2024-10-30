@@ -1,12 +1,12 @@
 // routes/testimonialRoutes.js
-const express = require("express");
-const {
+import express from "express";
+import {
   createTestimonial,
   getTestimonials,
   updateTestimonial,
   deleteTestimonial,
-} = require("../controllers/testimonialController");
-const auth = require("../middleware/authMiddleware");
+} from "../controllers/testimonialController.js";
+import auth from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -16,4 +16,4 @@ router.get("/", auth, getTestimonials);
 router.put("/:id", auth, updateTestimonial);
 router.delete("/:id", auth, deleteTestimonial);
 
-module.exports = router;
+export default router;
